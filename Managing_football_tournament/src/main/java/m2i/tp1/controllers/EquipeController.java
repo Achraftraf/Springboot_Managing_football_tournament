@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import m2i.tp1.entities.Equipe;
 import m2i.tp1.repositories.EquipeRepositories;
+import m2i.tp1.services.EquipeService;
 
 
 
@@ -23,6 +24,9 @@ public class EquipeController {
 	
 	@Autowired EquipeRepositories equipeRepositorires;
 
+	 @Autowired
+	    private EquipeService equipeService;
+	
 	
 	@GetMapping("equipes")
 	public List<Equipe> getAllequipes() {
@@ -34,11 +38,17 @@ public Equipe addEquipe(@RequestBody Equipe equipe) {
 	return equipeRepositorires.save(equipe);
 }
 
+/*
+ * @DeleteMapping("equipes/{id}") public void deleteEquipesById(@PathVariable
+ * Long id) { equipeRepositorires.deleteById(id); }
+ */
+
+
 @DeleteMapping("equipes/{id}")
-public void deleteEquipesById(@PathVariable Long id)
-{
-equipeRepositorires.deleteById(id);
+public void deleteEquipesById(@PathVariable Long id) {
+    equipeService.deleteEquipeById(id);
 }
+
 
 @GetMapping("equipes/{id}")
 public Optional<Equipe> getEquipeById(@PathVariable Long id)

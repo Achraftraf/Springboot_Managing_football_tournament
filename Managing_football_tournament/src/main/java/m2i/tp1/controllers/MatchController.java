@@ -38,6 +38,9 @@ public class MatchController {
 
 }
 
+	
+//in the match delete method we don't have the problem of foreign keys	
+	
 @DeleteMapping("matchs/{id}")
 public void deleteMatchsById(@PathVariable Long id)
 {
