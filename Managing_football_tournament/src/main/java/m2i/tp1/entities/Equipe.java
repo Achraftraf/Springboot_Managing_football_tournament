@@ -39,4 +39,10 @@ private List<Match> matchesAsEquipe1;
 @JsonIgnore
 private List<Match> matchesAsEquipe2;
 
+
+
+@OneToMany(mappedBy = "equipe")
+@JsonIgnore
+private List<Joueur> joueurs;
+
 }
