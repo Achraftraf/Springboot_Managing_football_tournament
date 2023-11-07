@@ -1,7 +1,13 @@
 package m2i.tp1.entities;
 
-import java.util.ArrayList;
+
+
+
+
+
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,7 +16,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,30 +23,20 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor @AllArgsConstructor @Data
 
 @Entity
-@Table(name = "football_match")
-public class Match {
+public class Equipe {
 
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
-Long idmatch;
-String dateMatch;
-String heureMatch;
-@ManyToOne
-@JoinColumn(name = "idarbitre")
-private Arbitre arbitre;
+Long idequipe;
+String name_equipe;
+String pays;
 
-@ManyToOne
-@JoinColumn(name = "idstade")
-private Stade stade;
+@OneToMany(mappedBy = "equipe1")
+@JsonIgnore
+private List<Match> matchesAsEquipe1;
 
+@OneToMany(mappedBy = "equipe2")
+@JsonIgnore
+private List<Match> matchesAsEquipe2;
 
-@ManyToOne
-@JoinColumn(name = "idequipe1")
-private Equipe equipe1;
-
-@ManyToOne
-@JoinColumn(name = "idequipe2")
-private Equipe equipe2;
 }
-
-

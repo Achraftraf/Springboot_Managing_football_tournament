@@ -18,15 +18,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor @AllArgsConstructor @Data
 
 @Entity
-public class Arbitre {
+public class Stade {
 
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
-Long idarbitre;
-String name;
-String Nationality;
+Long idstade;
+String namestade;
+String ville;
 
-@OneToMany(mappedBy = "arbitre")
+@OneToMany(mappedBy = "stade")
 @JsonIgnore
 private List<Match> matches;
 }
