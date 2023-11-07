@@ -14,12 +14,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import m2i.tp1.entities.Stade;
 import m2i.tp1.repositories.StadeRepositories;
+import m2i.tp1.services.StadeService;
 import m2i.tp1.repositories.MatchRepositories;
 
 
 
 @RestController
 public class StadeController {
+	
+	 @Autowired
+	 private StadeService stadeService;
 	
 	@Autowired StadeRepositories stadeRepositorires;
 	@Autowired MatchRepositories matchRepositorires;
@@ -34,10 +38,14 @@ public Stade addStade(@RequestBody Stade stade) {
 	return stadeRepositorires.save(stade);
 }
 
+/*
+ * @DeleteMapping("stades/{id}") public void deleteStadesById(@PathVariable Long
+ * id) { stadeRepositorires.deleteById(id); }
+ */
+
 @DeleteMapping("stades/{id}")
-public void deleteStadesById(@PathVariable Long id)
-{
-stadeRepositorires.deleteById(id);
+public void deleteStadesById(@PathVariable Long id) {
+    stadeService.deleteStadeById(id);
 }
 
 @GetMapping("stades/{id}")
