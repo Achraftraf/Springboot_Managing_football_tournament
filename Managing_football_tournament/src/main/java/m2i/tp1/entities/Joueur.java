@@ -30,6 +30,5 @@ String poste;
 
 @ManyToOne
 @JoinColumn(name = "idequipe")
-@JsonIgnore
 private Equipe equipe;
 }

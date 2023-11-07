@@ -12,8 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import m2i.tp1.entities.Equipe;
-import m2i.tp1.repositories.EquipeRepositories;
+import m2i.tp1.entities.Joueur;
 import m2i.tp1.repositories.JoueurRepositories;
 
 
@@ -21,31 +20,30 @@ import m2i.tp1.repositories.JoueurRepositories;
 @RestController
 public class JoueurController {
 	
-	@Autowired EquipeRepositories joueurRepositorires;
-	@Autowired JoueurRepositories matchRepositorires;
+	@Autowired JoueurRepositories joueurRepositorires;
+
 	
 	@GetMapping("joueurs")
-	public List<Equipe> getAlljoueurs() {
+	public List<Joueur> getAlljoueurs() {
 		return joueurRepositorires.findAll();
 	}
 	
 @PostMapping("joueurs")
-public Equipe addEquipe(@RequestBody Equipe joueur) {
+public Joueur addJoueur(@RequestBody Joueur joueur) {
+	
 	return joueurRepositorires.save(joueur);
 }
 
 @DeleteMapping("joueurs/{id}")
-public void deleteEquipesById(@PathVariable Long id)
+public void deleteJoueursById(@PathVariable Long id)
 {
 joueurRepositorires.deleteById(id);
 }
 
 @GetMapping("joueurs/{id}")
-public Optional<Equipe> getEquipeById(@PathVariable Long id)
+public Optional<Joueur> getJoueurById(@PathVariable Long id)
 {
 	return joueurRepositorires.findById(id);
 }
-
-
 
 }

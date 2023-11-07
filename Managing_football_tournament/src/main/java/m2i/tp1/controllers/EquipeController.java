@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import m2i.tp1.entities.Equipe;
 import m2i.tp1.repositories.EquipeRepositories;
-import m2i.tp1.repositories.MatchRepositories;
+
 
 
 
@@ -22,7 +22,7 @@ import m2i.tp1.repositories.MatchRepositories;
 public class EquipeController {
 	
 	@Autowired EquipeRepositories equipeRepositorires;
-	@Autowired MatchRepositories matchRepositorires;
+
 	
 	@GetMapping("equipes")
 	public List<Equipe> getAllequipes() {
@@ -45,7 +45,5 @@ public Optional<Equipe> getEquipeById(@PathVariable Long id)
 {
 	return equipeRepositorires.findById(id);
 }
-
-
 
 }
