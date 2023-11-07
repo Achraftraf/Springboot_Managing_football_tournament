@@ -25,7 +25,7 @@ Long idmatch;
 String dateMatch;
 String heureMatch;
 @ManyToOne
-@JoinColumn(name = "idarbitre")
+@JoinColumn(name = "idarbitre" , nullable = true)
 private Arbitre arbitre;
 
 @ManyToOne

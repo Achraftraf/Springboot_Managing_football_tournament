@@ -13,6 +13,5 @@ import m2i.tp1.entities.Arbitre;
 @Repository
 public interface ArbitreRepositories extends  JpaRepository<Arbitre, Long>{
 
-
 	
 }

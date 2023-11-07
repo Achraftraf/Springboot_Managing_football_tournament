@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,6 +26,14 @@ public class Arbitre {
 Long idarbitre;
 String name;
 String Nationality;
+
+
+/*
+ * @OneToMany(mappedBy = "arbitre", cascade = CascadeType.ALL) private
+ * List<Match> matches;   if i use this i will delete also the match from the table match
+ */
+
+
 
 @OneToMany(mappedBy = "arbitre")
 @JsonIgnore
