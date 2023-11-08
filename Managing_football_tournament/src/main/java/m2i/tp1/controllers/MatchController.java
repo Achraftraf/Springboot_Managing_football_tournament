@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import m2i.tp1.entities.Match;
+import m2i.tp1.entities.Stade;
 import m2i.tp1.repositories.ArbitreRepositories;
 import m2i.tp1.repositories.MatchRepositories;
 import m2i.tp1.services.MatchService;
@@ -69,5 +70,10 @@ public Match updateMatch(@PathVariable Long id, @RequestBody Match updatedMatch)
 @GetMapping("matchs/matchs-by-date")
 public List<Match> getMatchesByDate() {
     return matchRepositorires.findMatchesByDateMatch();
+}
+
+@GetMapping("matchs/{id}/stade")
+public Stade getStadeForMatch(@PathVariable Long id) {
+    return matchService.getStadeForMatch(id);
 }
 }
