@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import org.springframework.web.bind.annotation.RestController;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import m2i.tp1.entities.Match;
 import m2i.tp1.repositories.ArbitreRepositories;
 import m2i.tp1.repositories.MatchRepositories;
+import m2i.tp1.services.MatchService;
 
 
 @CrossOrigin(origins = "*")
@@ -25,6 +27,9 @@ import m2i.tp1.repositories.MatchRepositories;
 public class MatchController {
 	@Autowired ArbitreRepositories arbitreRepositorires;
 	@Autowired MatchRepositories matchRepositorires;
+	
+	@Autowired
+    private MatchService matchService;
 	
 	@GetMapping("matchs")
 	public List<Match> getAllmatchs() {
@@ -55,5 +60,9 @@ public Optional<Match> getMatchById(@PathVariable Long id)
 	return matchRepositorires.findById(id);
 }
 
+@PutMapping("matchs/{id}")
+public Match updateMatch(@PathVariable Long id, @RequestBody Match updatedMatch) {
+    return matchService.updateMatch(id, updatedMatch);
+}
 
 }

@@ -38,4 +38,23 @@ public class EquipeService {
             equipeRepositorires.deleteById(idequipe);
         }
     }
+    
+    
+    public Equipe updateEquipe(Long id, Equipe updatedEquipe) {
+        Optional<Equipe> existingEquipeOptional = equipeRepositorires.findById(id);
+
+        if (existingEquipeOptional.isPresent()) {
+            Equipe existingEquipe = existingEquipeOptional.get();
+            existingEquipe.setName_equipe(updatedEquipe.getName_equipe());
+            existingEquipe.setPays(updatedEquipe.getPays());
+            // Update other fields as needed
+
+            return equipeRepositorires.save(existingEquipe);
+        } else {
+            // Handle the case where the Equipe with the given ID is not found
+            // You can throw an exception or return an appropriate response
+            // For simplicity, returning null in case of not found
+            return null;
+        }
+    }
 }

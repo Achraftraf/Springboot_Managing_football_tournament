@@ -30,3 +30,4 @@ String poste;
 @JoinColumn(name = "idequipe")
 private Equipe equipe;
 }
+

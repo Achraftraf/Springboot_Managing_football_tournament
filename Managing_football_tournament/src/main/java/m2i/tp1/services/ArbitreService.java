@@ -33,4 +33,24 @@ public class ArbitreService {
             arbitreRepositorires.deleteById(idarbitre);
         }
     }
+    
+    
+    
+    public Arbitre updateArbitre(Long idarbitre, Arbitre updatedArbitre) {
+        Optional<Arbitre> existingArbitre = arbitreRepositorires.findById(idarbitre);
+
+        if (existingArbitre.isPresent()) {
+            Arbitre arbitre = existingArbitre.get();
+            arbitre.setName(updatedArbitre.getName());
+            arbitre.setNationality(updatedArbitre.getNationality());
+
+            // You can update other fields as well
+
+            return arbitreRepositorires.save(arbitre);
+        } else {
+            // Handle the case where the Arbitre with the given idarbitre does not exist.
+            // You can return null or throw an exception to indicate the error.
+            return null;
+        }
+    }
 }
