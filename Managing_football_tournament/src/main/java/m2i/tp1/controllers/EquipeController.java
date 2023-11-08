@@ -62,4 +62,10 @@ public Equipe updateEquipe(@PathVariable Long id, @RequestBody Equipe updatedEqu
     return equipeService.updateEquipe(id, updatedEquipe);
 }
 
+
+@GetMapping("equipes/maroc")
+public List<Equipe> getEquipesWithPaysMaroc() {
+    return equipeRepositorires.findEquipesByPaysMaroc();
+}
+
 }
