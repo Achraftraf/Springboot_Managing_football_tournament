@@ -88,4 +88,8 @@ public class MatchService {
         }
     }
     
+    
+    public void deleteMatchesByDateAndHeureBefore(String dateMatch, String heureMatch) {
+        matchRepositories.deleteByDateMatchLessThanAndHeureMatchLessThan(dateMatch, heureMatch);
+    }
 }

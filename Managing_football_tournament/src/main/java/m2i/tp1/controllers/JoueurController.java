@@ -63,6 +63,10 @@ public List<Joueur> getJoueursByEquipeName() {
     return joueurRepositorires.findJoueursByEquipeName();
 }
 
+@GetMapping("joueurs/attaquants-psg")
+public List<Joueur> getAttaquantsForPSG() {
+    return joueurRepositorires.findAttaquantsForPSG();
+}
 
 }
 

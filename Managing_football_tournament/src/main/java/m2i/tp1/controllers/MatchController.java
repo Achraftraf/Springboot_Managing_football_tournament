@@ -90,4 +90,9 @@ public List<Equipe> getEquipesForMatch(@PathVariable Long id) {
     return matchService.getEquipesForMatch(id);
 }
 
+@DeleteMapping("matchs/delete-matches-before/{dateMatch}/{heureMatch}")
+public void deleteMatchesByDateAndHeureBefore(@PathVariable String dateMatch, @PathVariable String heureMatch) {
+    matchService.deleteMatchesByDateAndHeureBefore(dateMatch, heureMatch);
+}
+
 }

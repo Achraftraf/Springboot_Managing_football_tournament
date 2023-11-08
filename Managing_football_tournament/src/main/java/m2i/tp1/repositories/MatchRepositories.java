@@ -16,4 +16,7 @@ import m2i.tp1.entities.Match;
 public interface MatchRepositories extends JpaRepository<Match, Long> {
     @Query("SELECT m FROM Match m WHERE m.dateMatch = '28/02/2021'")
     List<Match> findMatchesByDateMatch();
+    
+    // Add a new method to delete matches by dateMatch and heureMatch less than a given date and time
+    void deleteByDateMatchLessThanAndHeureMatchLessThan(String dateMatch, String heureMatch);
 }
