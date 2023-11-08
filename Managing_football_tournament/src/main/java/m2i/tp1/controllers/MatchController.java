@@ -65,4 +65,9 @@ public Match updateMatch(@PathVariable Long id, @RequestBody Match updatedMatch)
     return matchService.updateMatch(id, updatedMatch);
 }
 
+
+@GetMapping("matchs/matchs-by-date")
+public List<Match> getMatchesByDate() {
+    return matchRepositorires.findMatchesByDateMatch();
+}
 }
