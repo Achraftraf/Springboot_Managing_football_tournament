@@ -1,6 +1,6 @@
 package m2i.tp1.entities;
 
-
+import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,7 +22,7 @@ public class Match {
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 Long idmatch;
-String dateMatch;
+LocalDate dateMatch;
 String heureMatch;
 @ManyToOne
 @JoinColumn(name = "idarbitre" , nullable = true)
@@ -48,5 +48,6 @@ private Equipe equipe2;
  * // ... other fields ... '}'; }
  */
 }
+
 
 

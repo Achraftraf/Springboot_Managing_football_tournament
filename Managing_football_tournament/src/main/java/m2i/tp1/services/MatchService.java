@@ -3,6 +3,7 @@ package m2i.tp1.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import jakarta.transaction.Transactional;
 import m2i.tp1.entities.Equipe;
 import m2i.tp1.entities.Match;
 import m2i.tp1.entities.Stade;
@@ -11,7 +12,7 @@ import m2i.tp1.repositories.MatchRepositories;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
+import java.time.LocalDate;	
 @Service
 public class MatchService {
     @Autowired
@@ -88,8 +89,14 @@ public class MatchService {
         }
     }
     
-    
-    public void deleteMatchesByDateAndHeureBefore(String dateMatch, String heureMatch) {
-        matchRepositories.deleteByDateMatchLessThanAndHeureMatchLessThan(dateMatch, heureMatch);
+
+
+
+
+    @Transactional
+    public void deleteMatchesBeforeCurrentDate() {
+        LocalDate currentDate = LocalDate.now();
+        matchRepositories.deleteByDateMatchBefore(currentDate);
     }
 }
+
