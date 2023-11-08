@@ -40,6 +40,13 @@ private Equipe equipe1;
 @ManyToOne
 @JoinColumn(name = "idequipe2")
 private Equipe equipe2;
+
+
+/*
+ * @Override public String toString() { return "Match{" + "idmatch=" + idmatch +
+ * ", dateMatch='" + dateMatch + '\'' + ", heureMatch='" + heureMatch + '\'' +
+ * // ... other fields ... '}'; }
+ */
 }
 
 

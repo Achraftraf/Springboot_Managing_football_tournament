@@ -56,4 +56,13 @@ public Optional<Joueur> getJoueurById(@PathVariable Long id)
 public Joueur updateJoueur(@PathVariable Long id, @RequestBody Joueur updatedJoueur) {
     return joueurService.updateJoueur(id, updatedJoueur);
 }
+
+
+@GetMapping("joueurs/joueurs-by-equipe")
+public List<Joueur> getJoueursByEquipeName() {
+    return joueurRepositorires.findJoueursByEquipeName();
 }
+
+
+}
+

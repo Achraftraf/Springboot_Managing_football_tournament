@@ -2,10 +2,14 @@ package m2i.tp1.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import m2i.tp1.entities.Equipe;
 import m2i.tp1.entities.Match;
 import m2i.tp1.entities.Stade;
 import m2i.tp1.repositories.MatchRepositories;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -49,4 +53,39 @@ public class MatchService {
             return null;
         }
     }
+    
+    
+    
+	/*
+	 * public Pair<Equipe, Equipe> getEquipesForMatch(Long id) { Optional<Match>
+	 * matchOptional = matchRepositories.findById(id);
+	 * 
+	 * if (matchOptional.isPresent()) { Match match = matchOptional.get(); Equipe
+	 * equipe1 = match.getEquipe1(); Equipe equipe2 = match.getEquipe2(); return new
+	 * ImmutablePair<>(equipe1, equipe2); } else { // Handle the case where the
+	 * Match with the given ID is not found // You can throw an exception or return
+	 * an appropriate response // For simplicity, returning null in case of not
+	 * found return new ImmutablePair<>(null, null); } }
+	 */  
+    
+    
+    
+    
+    public List<Equipe> getEquipesForMatch(Long id) {
+        Optional<Match> matchOptional = matchRepositories.findById(id);
+
+        if (matchOptional.isPresent()) {
+            Match match = matchOptional.get();
+            List<Equipe> equipes = new ArrayList<>();
+            equipes.add(match.getEquipe1());
+            equipes.add(match.getEquipe2());
+            return equipes;
+        } else {
+            // Handle the case where the Match with the given ID is not found
+            // You can throw an exception or return an appropriate response
+            // For simplicity, returning an empty list in case of not found
+            return new ArrayList<>();
+        }
+    }
+    
 }

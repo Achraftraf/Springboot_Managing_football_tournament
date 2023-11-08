@@ -2,6 +2,7 @@ package m2i.tp1.controllers;
 
 
 
+
 import java.util.List;
 import java.util.Optional;
 
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import m2i.tp1.entities.Equipe;
 import m2i.tp1.entities.Match;
 import m2i.tp1.entities.Stade;
 import m2i.tp1.repositories.ArbitreRepositories;
@@ -76,4 +78,16 @@ public List<Match> getMatchesByDate() {
 public Stade getStadeForMatch(@PathVariable Long id) {
     return matchService.getStadeForMatch(id);
 }
+/*
+ * @GetMapping("matchs/{id}/equipes") public Pair<Equipe, Equipe>
+ * getEquipesForMatch(@PathVariable Long id) { return
+ * matchService.getEquipesForMatch(id); }
+ */
+
+
+@GetMapping("matchs/{id}/equipes")
+public List<Equipe> getEquipesForMatch(@PathVariable Long id) {
+    return matchService.getEquipesForMatch(id);
+}
+
 }
