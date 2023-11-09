@@ -45,8 +45,11 @@ public void deleteJoueursById(@PathVariable Long id)
 joueurRepositorires.deleteById(id);
 }
 
+<<<<<<< HEAD
 // we don't need to use the service because the joueur is not depend on the equipe if we remove the joueur we will remove the equipe from the joueur
 
+=======
+>>>>>>> branch 'main' of https://github.com/Achraftraf/Springboot_Managing_football_tournament.git
 @GetMapping("joueurs/{id}")
 public Optional<Joueur> getJoueurById(@PathVariable Long id)
 {
