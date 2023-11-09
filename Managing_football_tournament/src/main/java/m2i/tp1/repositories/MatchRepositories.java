@@ -20,10 +20,6 @@ public interface MatchRepositories extends JpaRepository<Match, Long> {
 
     
     // Add a new method to delete matches by dateMatch and heureMatch less than a given date and time
-<<<<<<< HEAD
 	void deleteByDateMatchBeforeAndHeureMatchBefore(LocalDate dateMatch, String heureMatch);
 
-=======
-    void deleteByDateMatchBefore(LocalDate dateMatch);
->>>>>>> branch 'main' of https://github.com/Achraftraf/Springboot_Managing_football_tournament.git
 }

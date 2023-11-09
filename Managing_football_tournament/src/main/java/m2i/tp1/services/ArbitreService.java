@@ -52,9 +52,6 @@ public class ArbitreService {
             // You can return null or throw an exception to indicate the error.
             return null;
         }
-<<<<<<< HEAD
         // they are the cruds by defaults in the repository
-=======
->>>>>>> branch 'main' of https://github.com/Achraftraf/Springboot_Managing_football_tournament.git
     }
 }

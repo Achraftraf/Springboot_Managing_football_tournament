@@ -50,10 +50,7 @@ public void deleteEquipesById(@PathVariable Long id) {
     equipeService.deleteEquipeById(id);
 }
 
-<<<<<<< HEAD
 // we need to use the service because we need to costimize the method of delete the equipe we don't need to use the repositories methods and cascade.all to force the delete because if we delete the equipe we need to delete the matchs because 
-=======
->>>>>>> branch 'main' of https://github.com/Achraftraf/Springboot_Managing_football_tournament.git
 
 @GetMapping("equipes/{id}")
 public Optional<Equipe> getEquipeById(@PathVariable Long id)
