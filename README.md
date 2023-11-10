@@ -40,7 +40,7 @@ Use Spring Data for simplified data access and persistence.
 ### Testing the APIs with Postman
 
 To test the APIs, you can use Postman. Download the Postman collection with sample requests from the following link:
-([link_to_your_exported_postman_collection]https://drive.google.com/drive/folders/1vkYJnSe1RLx-oK-D1PKj1vU1CemJqDbh?usp=sharing)
+https://drive.google.com/drive/folders/1vkYJnSe1RLx-oK-D1PKj1vU1CemJqDbh?usp=sharing
 
 Open Postman, import the collection, and start testing the endpoints based on the provided instructions..
 
