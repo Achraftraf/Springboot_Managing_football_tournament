@@ -37,9 +37,13 @@ Utilize dependency injection for better code organization and flexibility.
 
 Use Spring Data for simplified data access and persistence.
 
-### Postman Testing
+### Testing the APIs with Postman
 
-Utilize Postman for testing the API endpoints. Include a collection with sample requests.
+To test the APIs, you can use Postman. Download the Postman collection with sample requests from the following link:
+
+[Postman Collection]([link_to_your_exported_postman_collection](https://drive.google.com/drive/folders/1vkYJnSe1RLx-oK-D1PKj1vU1CemJqDbh?usp=sharing))
+
+Open Postman, import the collection, and start testing the endpoints based on the provided instructions..
 
 ### Video Presentation
 
