@@ -1,6 +1,8 @@
 package m2i.tp1.services;
 
 import java.util.Optional;
+import java.io.IOException;
+import java.nio.file.Path;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,7 +11,7 @@ import m2i.tp1.entities.Arbitre;
 import m2i.tp1.entities.Match;
 import m2i.tp1.repositories.ArbitreRepositories;
 import m2i.tp1.repositories.MatchRepositories;
-
+import org.springframework.web.multipart.MultipartFile;
 @Service
 public class ArbitreService {
     @Autowired
@@ -54,4 +56,24 @@ public class ArbitreService {
         }
         // they are the cruds by defaults in the repository
     }
+    
+ // Service method
+    public Arbitre addArbire(
+        Long idarbitre,
+        String name,
+        String nationality,
+        MultipartFile file) throws IllegalStateException, IOException {
+        
+        Arbitre arbitre = new Arbitre(idarbitre, name, nationality, "", null);
+        String pathPhoto = "src/main/resources/static/photos/" + arbitre.getIdarbitre() + ".png";
+        file.transferTo(Path.of(pathPhoto));
+        
+        arbitre = arbitreRepositorires.save(arbitre);
+        
+        String urlPhoto = "http://localhost:8080/photos/" + arbitre.getIdarbitre() + ".png";
+        arbitre.setPhotos(urlPhoto);
+        
+        return arbitreRepositorires.save(arbitre);
+    }
+
 }

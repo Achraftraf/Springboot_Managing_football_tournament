@@ -26,6 +26,7 @@ public class Arbitre {
 Long idarbitre;
 String name;
 String Nationality;
+String photos;
 
 
 /*
