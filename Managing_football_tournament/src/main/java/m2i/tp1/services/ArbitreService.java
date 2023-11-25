@@ -2,7 +2,9 @@ package m2i.tp1.services;
 
 import java.util.Optional;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -58,22 +60,33 @@ public class ArbitreService {
     }
     
  // Service method
-    public Arbitre addArbire(
-        Long idarbitre,
-        String name,
-        String nationality,
-        MultipartFile file) throws IllegalStateException, IOException {
-        
+    public Arbitre addArbitre(Long idarbitre, String name, String nationality, MultipartFile file) {
         Arbitre arbitre = new Arbitre(idarbitre, name, nationality, "", null);
-        String pathPhoto = "src/main/resources/static/photos/" + arbitre.getIdarbitre() + ".png";
-        file.transferTo(Path.of(pathPhoto));
-        
-        arbitre = arbitreRepositorires.save(arbitre);
-        
-        String urlPhoto = "http://localhost:8080/photos/" + arbitre.getIdarbitre() + ".png";
-        arbitre.setPhotos(urlPhoto);
-        
-        return arbitreRepositorires.save(arbitre);
-    }
+        String directoryPath = "src/main/resources/static/photos/";
+        String fileName = arbitre.getIdarbitre() + ".png";
+        String fullPath = directoryPath + fileName;
 
+        try {
+            // Check if the directory exists, if not create it
+            Path directory = Paths.get(directoryPath);
+            if (!Files.exists(directory)) {
+                Files.createDirectories(directory);
+            }
+
+            // Save the file
+            Path filePath = Paths.get(fullPath);
+            Files.write(filePath, file.getBytes());
+
+            // Update Arbitre with photo URL
+            String urlPhoto = "http://localhost:8080/photos/" + fileName;
+            arbitre.setPhotos(urlPhoto);
+
+            return arbitreRepositorires.save(arbitre);
+        } catch (IOException e) {
+            e.printStackTrace(); // Log or handle the exception appropriately
+            return null;
+        }
+    }
+    
+    
 }

@@ -47,7 +47,7 @@ public class ArbitreController {
 	    @RequestParam String nationality,
 	    @RequestParam MultipartFile file) throws IllegalStateException, IOException {
 
-	    return arbitreService.addArbire(idarbitre, name, nationality, file);
+	    return arbitreService.addArbitre(idarbitre, name, nationality, file);
 	}
 
 
